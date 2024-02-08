@@ -10,20 +10,22 @@
 
 	<table class="table table-borderless">
 		<tbody>
-			<tr>
-				<th>Titre:</th>
-				<td>{{ livre.nom }}</td>
+			{% for livr in livre %}
+				<tr>
+					<th>Titre:</th>
+					<td>{{ livre.nom }}</td>
 
-			</tr>
-			<tr>
-				<th>Auteur:</th>
-				<td>{{ livre.auteur }}</td>
-			</tr>
+				</tr>
+				<tr>
+					<th>Auteur:</th>
+					<td>{{ livre.auteur }}</td>
+				</tr>
 
-			<tr>
-				<th>Nombre De Page:</th>
-				<td>{{ livre.nombreDePage }}</td>
-			</tr>
+				<tr>
+					<th>Nombre De Page:</th>
+					<td>{{ livre.nombreDePage }}</td>
+				</tr>
+			{% endfor %}
 
 		</tbody>
 	</table>

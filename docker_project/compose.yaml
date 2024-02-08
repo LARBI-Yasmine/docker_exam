@@ -1,21 +1,33 @@
 version: '3'
 
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-16}-alpine
+
+  app:
+    image: my_image:latest # Remplacez mon_projet_symfony:latest par le nom de votre image Symfony
+    ports:
+      - "8000:80" # Mappe le port 80 du conteneur au port 8000 de l'hôte
+    volumes:
+      - .:/var/www/html # Montage du répertoire de travail de Symfony dans le conteneur
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
+      - APP_ENV=dev
+      - DATABASE_URL=mysql://root:root@http://127.0.0.1/docker_db # Remplacez les valeurs par les paramètres de connexion à votre base de données MySQL
+    depends_on:
+      - db # Dépend du service de la base de données
+  db:
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    ports:
+      - "3306:3306" # Mappe le port 3306 du conteneur au port 3306 de l'hôte
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-docker_db}
       # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-root}
+      POSTGRES_USER: ${POSTGRES_USER:-root}
     volumes:
       - database_data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      ###< doctrine/doctrine-bundle ###
 
 volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
+  database_data: ###< doctrine/doctrine-bundle ###
