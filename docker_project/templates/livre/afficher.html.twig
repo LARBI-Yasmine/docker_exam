@@ -1,0 +1,31 @@
+{% block title %}
+	{{ livre.nom }}
+{% endblock %}
+
+{% block body %}
+
+	<h2>
+		<center>Mon livre "{{ livre.nom }}"</center>
+	</h2><br>
+
+	<table class="table table-borderless">
+		<tbody>
+			<tr>
+				<th>Titre:</th>
+				<td>{{ livre.nom }}</td>
+
+			</tr>
+			<tr>
+				<th>Auteur:</th>
+				<td>{{ livre.auteur }}</td>
+			</tr>
+
+			<tr>
+				<th>Nombre De Page:</th>
+				<td>{{ livre.nombreDePage }}</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<a href="{{ path('app_livre') }}" class="btn btn-primary" style="font-size:12px">Retour</a>
+{% endblock %}

@@ -1,20 +1,31 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello LivreController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<center>
+		<h1 class="titre1">Ma Bibliothéque de Livres</h1>
+		<a href="{{ path('app_livre_new') }}" class="btn btn-primary">Ajouter un nouveau livre</a><br><br>
+	</center><br>
+	<div class="container">
+		<div class="row">
+			{% for livre in livres %}
+				<div class="col-md-4">
+					<div class="card" style="width: 18rem;height: 450px;">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/larbi/docker_exam/docker_project/src/Controller/LivreController.php'|file_link(0) }}">src/Controller/LivreController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/larbi/docker_exam/docker_project/templates/livre/index.html.twig'|file_link(0) }}">templates/livre/index.html.twig</a></code></li>
-    </ul>
-</div>
+						<div class="card-body">
+							<h4 class="card-title">{{ livre.nom }}</h4>
+							<p class="card-text">Auteur:
+								{{livre.auteur}}</p>
+							<p class="card-text">Auteur:
+								{{livre.nombredepage}}</p>
+
+
+							<a href="{{ path('app_livre_afficher', {'id': livre.id}) }}" class="btn btn-primary" style="font-size:12px">Afficher</a>
+
+						</div>
+					</div><br>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+
 {% endblock %}

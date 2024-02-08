@@ -20,7 +20,7 @@ class LivreType extends AbstractType
                 'placeholder' => 'Nom du livre'
             ]
         ])
-        ->add('autheur', TextType::class, [
+        ->add('auteur', TextType::class, [
             'label' => 'Auteur',
             'required' => true,
         ])
